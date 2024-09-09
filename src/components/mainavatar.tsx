@@ -16,3 +16,4 @@ export const MainAvatar = ({ name, avatarUrl, initials, className }: MainAvatarP
     </Avatar>
   )
 }
+
