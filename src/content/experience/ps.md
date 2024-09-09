@@ -3,7 +3,7 @@ role: R&D Scientist
 location: Remote
 company: PlantingSpace
 companyUrl: https://planting.space
-start: 01/10/2021
+start: 2021-10-01
 ---
 
 

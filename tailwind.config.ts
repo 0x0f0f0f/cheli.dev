@@ -58,6 +58,10 @@ const config = {
         sans: ['Inter', ...fontFamily.sans],
       },
       keyframes: {
+        blur: {
+          '0%': { filter: "blur(5px)", opacity: '0', transform: "translate(0, 15px)" },
+          '100%': { filter: "blur(0px)" },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -96,6 +100,7 @@ const config = {
         pulse: "pulse var(--duration) ease-out infinite",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
+        blur: 'blur 0.8s ease-in-out',
       },
     },
   },

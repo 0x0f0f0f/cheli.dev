@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+import Prose from './Prose.astro'
+import { Separator } from '@/components/ui/separator'
+
+const albums = await getCollection('albums')
+const albumsWithContent = await Promise.all(
+  albums.map(async (x) => {
+    return { ...x, Content: (await x.render()).Content }
+  }),
+)
+---
+
+<div class="flex w-full flex-col">
+  {
+    albumsWithContent.map((a, i) => {
+      return (
+        <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-8">
+          {i == 0 && <Separator className="col-span-1 sm:col-span-3" />}
+
+          <div class="col-span-1 flex justify-start">
+            <a href="https://milig.online/punto/">
+              <Image
+                class="h-full w-full"
+                width={150}
+                height={150}
+                alt={`${a.data.artist} - ${a.data.title}`}
+                src="/img/punto.jpg"
+              />
+            </a>
+          </div>
+          <div class="col-span-1 flex w-full flex-col justify-center gap-y-4 p-2 text-left sm:col-span-2">
+            <a href={a.data.href} class="flex">
+              <h2>
+                <span class="font-semibold underline">
+                  {a.data.artist} - {a.data.title}
+                </span>
+                - {dayjs(a.data.date).format('MMMM YYYY')}
+              </h2>
+            </a>
+
+            <span class="text-sm text-muted-foreground">{<a.Content />}</span>
+            <ul class="my-2 text-sm text-muted-foreground">
+              <li>
+                {a.data.spotify && (
+                  <a href={a.data.spotify} class="underline">
+                    Spotify
+                  </a>
+                )}
+              </li>
+            </ul>
+          </div>
+
+          <Separator className="col-span-1 sm:col-span-3" />
+        </div>
+      )
+    })
+  }
+</div>

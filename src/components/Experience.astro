@@ -1,5 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
+import { ExperienceCard } from './experience-card'
+
+import dayjs from 'dayjs';
+import exp from 'constants';
 
 const experiences = await getCollection('experience')
 const contents = await Promise.all(
@@ -9,10 +13,24 @@ const contents = await Promise.all(
 
 <div>
   {
-    experiences.map((exp, i) => {
-      const { Content } = contents[i]
-      console.log(Content)
-      return <Content />
-    })
+    experiences
+      .map((exp, i) => {
+        const { Content } = contents[i]
+        return {...exp, Content}
+      })
+      .sort((a, b) => (new Date(b.data.end)).getTime() - (new Date(a.data.end ?? Date.now())).getTime())
+      .map((exp, i) => {
+        return (
+          <ExperienceCard
+            title={exp.data.role}
+            company={exp.data.company}
+            companyUrl={exp.data.company}
+            location={exp.data.location}
+            dates={`${dayjs(exp.data.start).format("MMM YYYY")} - ${exp.data.end ? dayjs(exp.data.end).format("MMM YYYY") :  "Present"}`}}
+          >
+            <exp.Content />
+          </ExperienceCard>
+        )
+      })
   }
 </div>

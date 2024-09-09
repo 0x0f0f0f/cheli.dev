@@ -1,0 +1,68 @@
+---
+import csv from 'csvtojson'
+import * as fs from 'fs'
+import { Button } from './ui/button'
+import { Badge } from './ui/badge'
+
+// const data = await Astro.glob('../citations.csv')
+const fileContent = await fs.promises.readFile('src/citations.csv')
+const data = fileContent.toString()
+// console.log(data)
+
+interface Article {
+  Authors: string
+  Title: string
+  Publication?: string
+  Volume?: string
+  Number?: string
+  Pages?: string
+  Year: number
+  Publisher?: string
+  Extra?: React.ReactNode
+}
+
+const articles = (await csv().fromString(data)).sort(
+  (a, b) => parseInt(b.Year) - parseInt(a.Year),
+) as Article[]
+---
+
+<div class="flex flex-col gap-y-4">
+  <span>
+    See my <a
+      class="underline"
+      href="https://scholar.google.com/citations?user=zahTNtAAAAAJ&hl=en"
+      >Google Scholar</a
+    > profile.
+  </span>
+  <ul class="list-none sm:list-disc">
+    {
+      articles
+        .map((a) => {
+          if (
+            a.Title == 'Performant Dynamically Typed E-Graphs in Pure Julia'
+          ) {
+            return {
+              ...a,
+              Extra: (
+                <a href="https://pldi24.sigplan.org/">
+                  <Badge>Presented at PLDI24, E-Graphs Workshop!</Badge>
+                </a>
+              ),
+            }
+          } else {
+            return a
+          }
+        })
+        .map((article) => (
+          <li>
+            <b>{article.Year}</b> - {article.Title} <br />
+            <span class="text-sm text-muted-foreground">{article.Authors}</span>
+            <span class="text-sm text-muted-foreground">
+              {article.Publication}
+            </span>
+            {article.Extra && <span class="font-bold">{article.Extra}</span>}
+          </li>
+        ))
+    }
+  </ul>
+</div>
