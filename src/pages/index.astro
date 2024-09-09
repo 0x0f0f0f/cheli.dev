@@ -13,7 +13,7 @@ import BlogPostGrid from '@/components/BlogPostGrid.astro'
 import Experience from '@/components/Experience.astro'
 import LiveShows from '@/components/LiveShows.astro'
 import Publications from '@/components/Publications.astro'
-import BlurFade from '@/components/magicui/blur-fade'
+import Image from 'astro/components/Image.astro'
 
 function incrementCounter() {
   let x = 1
@@ -32,7 +32,16 @@ const increment = incrementCounter()
 >
   <section id="hero">
     <div class="mx-auto w-full max-w-2xl space-y-8">
-      <div class="flex justify-between gap-2">
+      <div
+        class="flex flex-col items-center justify-between gap-2 sm:flex-row-reverse"
+      >
+        <Image
+          class="animate-blur h-32 w-32 rounded-full"
+          src={DATA.avatarUrl}
+          alt={DATA.name}
+          width={200}
+          height={200}
+        />
         <div class="flex flex-1 flex-col space-y-1.5">
           <h1
             class="animate-blur text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
@@ -44,13 +53,6 @@ const increment = incrementCounter()
             ><Description /></span
           >
         </div>
-        <MainAvatar
-          className="animate-blur"
-          name={DATA.name}
-          avatarUrl={DATA.avatarUrl}
-          initials={DATA.initials}
-          client:load
-        />
       </div>
     </div>
   </section>
