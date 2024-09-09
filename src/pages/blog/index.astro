@@ -1,0 +1,12 @@
+---
+import BlogPostGrid from '@/components/BlogPostGrid.astro'
+import { Separator } from '@/components/ui/separator'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+---
+
+<BaseLayout>
+  <h1 class="text-center text-4xl font-bold">Blog</h1>
+  <Separator />
+  <BlogPostGrid limit={Infinity} />
+</BaseLayout>

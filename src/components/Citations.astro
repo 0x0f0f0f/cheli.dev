@@ -1,0 +1,50 @@
+---
+import csv from 'csvtojson'
+import * as fs from 'fs'
+
+// const data = await Astro.glob('../citations.csv')
+const fileContent = await fs.promises.readFile('src/citations.csv')
+const data = fileContent.toString()
+// console.log(data)
+
+interface Article {
+  Authors: string
+  Title: string
+  Publication?: string
+  Volume?: string
+  Number?: string
+  Pages?: string
+  Year: number
+  Publisher?: string
+}
+
+const articles = await csv().fromString(data)
+
+// console.log(articles)
+
+const groupedArticles = articles
+  .sort((a, b) => parseInt(b.Year) - parseInt(a.Year))
+  .reduce((acc, curr) => {
+    const key = curr.fieldName
+    acc[key] = acc[key] || []
+    acc[key].push(curr)
+    return acc
+  }, {})
+---
+
+<div>
+  <ul class="list-disc">
+    {
+      articles.map((article) => (
+        <li>
+          <b>{article.Year}</b> - {article.Title} <br />
+          <span class="text-sm text-muted-foreground">{article.Authors}</span>
+          <span class="text-sm text-muted-foreground">
+            {article.Publication}
+          </span>
+          ,
+        </li>
+      ))
+    }
+  </ul>
+</div>

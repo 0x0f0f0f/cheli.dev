@@ -1,0 +1,6 @@
+﻿Authors,Title,Publication,Volume,Number,Pages,Year,Publisher
+"Cheli, Alessandro; ",Metatheory. jl: Fast and Elegant Algebraic Computation in Julia with Extensible Equality Saturation,arXiv preprint arXiv:2102.07888,,,,2021,
+"Gowda, Shashi; Ma, Yingbo; Cheli, Alessandro; Gwóźzdź, Maja; Shah, Viral B; Edelman, Alan; Rackauckas, Christopher; ",High-performance symbolic-numerics via multiple dispatch,ACM Communications in Computer Algebra,55,3,92-96,2022,"ACM New York, NY, USA"
+"Cheli, Alessandro; Rackauckas, Christopher; ",Automated Code Optimization with E-Graphs,arXiv preprint arXiv:2112.14714,,,,2021,
+"Iravanian, Shahriar; Martensen, Carl Julius; Cheli, Alessandro; Gowda, Shashi; Jain, Anand; Ma, Yingbo; Rackauckas, Chris; ",Symbolic-numeric integration of univariate expressions based on sparse regression,ACM Communications in Computer Algebra,56,2,84-87,2022,"ACM New York, NY, USA"
+"Cheli, Alessandro; Heim, Niklas; ",Performant Dynamically Typed E-Graphs in Pure Julia,arXiv preprint arXiv:2404.08751,,,,2024,

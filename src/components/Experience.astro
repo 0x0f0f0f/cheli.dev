@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content'
+
+const experiences = await getCollection('experience')
+const contents = await Promise.all(
+  experiences.map(async (x) => await x.render()),
+)
+---
+
+<div>
+  {
+    experiences.map((exp, i) => {
+      const { Content } = contents[i]
+      console.log(Content)
+      return <Content />
+    })
+  }
+</div>
