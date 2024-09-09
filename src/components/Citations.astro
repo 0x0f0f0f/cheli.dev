@@ -32,7 +32,14 @@ const groupedArticles = articles
   }, {})
 ---
 
-<div>
+<div class="flex flex-col gap-y-4">
+  <span>
+    See my <a
+      class="underline"
+      href="https://scholar.google.com/citations?user=zahTNtAAAAAJ&hl=en"
+      >Google Scholar</a
+    > profile.
+  </span>
   <ul class="list-disc">
     {
       articles.map((article) => (
