@@ -24,7 +24,7 @@ const contents = await Promise.all(
           <ExperienceCard
             title={exp.data.role}
             company={exp.data.company}
-            companyUrl={exp.data.company}
+            companyUrl={exp.data.companyUrl}
             location={exp.data.location}
             dates={`${dayjs(exp.data.start).format("MMM YYYY")} - ${exp.data.end ? dayjs(exp.data.end).format("MMM YYYY") :  "Present"}`}}
           >
