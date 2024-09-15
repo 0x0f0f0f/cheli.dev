@@ -1,5 +1,5 @@
 ---
-role: R&D Scientist
+role: R&D Engineer
 location: Remote
 company: PlantingSpace
 companyUrl: https://planting.space
