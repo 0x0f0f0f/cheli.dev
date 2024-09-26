@@ -7,6 +7,7 @@ const BLUR_FADE_DELAY = 0.04
 import { Content as ContactInfo } from '@/contact.md'
 import { frontmatter as DATA, Content as Description } from '@/description.md'
 import { Content as Summary } from '@/summary.md'
+import { Content as Masterclasses } from '@/masterclasses.md'
 
 import Albums from '@/components/Albums.astro'
 import BlogPostGrid from '@/components/BlogPostGrid.astro'
@@ -14,6 +15,7 @@ import Experience from '@/components/Experience.astro'
 import LiveShows from '@/components/LiveShows.astro'
 import Publications from '@/components/Publications.astro'
 import Image from 'astro/components/Image.astro'
+import Prose from '@/components/Prose.astro'
 
 function incrementCounter() {
   let x = 1
@@ -36,7 +38,7 @@ const increment = incrementCounter()
         class="flex flex-col items-center justify-between gap-2 sm:flex-row-reverse"
       >
         <Image
-          class="animate-blur h-32 w-32 rounded-full"
+          class="h-32 w-32 animate-blur rounded-full"
           src={DATA.avatarUrl}
           alt={DATA.name}
           width={200}
@@ -49,7 +51,7 @@ const increment = incrementCounter()
             {DATA.name}
           </h1>
 
-          <span class="animate-blur max-w-[600px] md:text-xl"
+          <span class="max-w-[600px] animate-blur md:text-xl"
             ><Description /></span
           >
         </div>
@@ -57,10 +59,10 @@ const increment = incrementCounter()
     </div>
   </section>
   <section id="about" class="mx-auto flex w-full max-w-2xl flex-col">
-    <h2 class="animate-blur my-4 text-xl font-bold">About</h2>
+    <h2 class="my-4 animate-blur text-xl font-bold">About</h2>
 
     <span
-      class="animate-blur prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
+      class="prose max-w-full animate-blur text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
       ><Summary /></span
     >
   </section>
@@ -89,7 +91,17 @@ const increment = incrementCounter()
 
   <section
     id="publications"
-    class="animate-blur mx-auto flex w-full max-w-2xl flex-col"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
+  >
+    <h2 class="my-4 text-xl font-bold">Masterclasses in Berlin</h2>
+    <Prose>
+      <Masterclasses />
+    </Prose>
+  </section>
+
+  <section
+    id="publications"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
   >
     <h2 class="my-4 text-xl font-bold">Publications</h2>
     <Publications />
@@ -97,7 +109,7 @@ const increment = incrementCounter()
 
   <section
     id="music"
-    class="animate-blur mx-auto flex w-full max-w-2xl flex-col"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
   >
     <h2 class="my-4 text-xl font-bold">Albums</h2>
     <Albums />
@@ -105,7 +117,7 @@ const increment = incrementCounter()
 
   <section
     id="liveshows"
-    class="animate-blur mx-auto flex w-full max-w-2xl flex-col"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
   >
     <h2 class="my-4 text-xl font-bold">Live Shows & Gigs</h2>
     <LiveShows />
@@ -113,7 +125,7 @@ const increment = incrementCounter()
 
   <section
     id="experience"
-    class="animate-blur mx-auto flex w-full max-w-2xl flex-col"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
   >
     <h2 class="my-4 text-xl font-bold">Experience</h2>
     <Experience />
@@ -121,7 +133,7 @@ const increment = incrementCounter()
 
   <section
     id="blog"
-    class="animate-blur mx-auto flex w-full max-w-2xl flex-col"
+    class="mx-auto flex w-full max-w-2xl animate-blur flex-col"
   >
     <a href="/blog">
       <h2 class="my-4 text-xl font-bold">Blog Posts</h2>
