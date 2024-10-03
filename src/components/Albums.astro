@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
-import Prose from './Prose.astro'
 import { Separator } from '@/components/ui/separator'
 
 const albums = await getCollection('albums')
@@ -21,13 +20,13 @@ const albumsWithContent = await Promise.all(
           {i == 0 && <Separator className="col-span-1 sm:col-span-3" />}
 
           <div class="col-span-1 flex justify-start">
-            <a href="https://milig.online/punto/">
+            <a href={a.data.href}>
               <Image
                 class="h-full w-full"
                 width={150}
                 height={150}
                 alt={`${a.data.artist} - ${a.data.title}`}
-                src="/img/punto.jpg"
+                src={a.data.img}
               />
             </a>
           </div>
